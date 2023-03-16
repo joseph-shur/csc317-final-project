@@ -5,14 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="df436953-9ca9-4197-9875-8e314427b11a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/application/public/css/style-index.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/public/css/style-login.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/public/css/style-postvideo.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/public/css/style-profile.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/public/css/style-registration.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/public/css/style-viewpost.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/public/css/th-184974902.jpeg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/public/css/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/public/css/style-index.css" beforeDir="false" afterPath="$PROJECT_DIR$/application/public/css/style-index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/public/css/style-login.css" beforeDir="false" afterPath="$PROJECT_DIR$/application/public/css/style-login.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/public/css/style-postvideo.css" beforeDir="false" afterPath="$PROJECT_DIR$/application/public/css/style-postvideo.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/public/css/style-profile.css" beforeDir="false" afterPath="$PROJECT_DIR$/application/public/css/style-profile.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/public/css/style-registration.css" beforeDir="false" afterPath="$PROJECT_DIR$/application/public/css/style-registration.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/public/html/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/public/html/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/public/html/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/public/html/login.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/public/html/postvideo.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/public/html/postvideo.html" afterDir="false" />
