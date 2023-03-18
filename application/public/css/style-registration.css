@@ -1,0 +1,41 @@
+page-header {
+    color: #470073;
+    background-color: white;
+    text-align: center;
+    box-shadow: black;
+    border-bottom-color: black;
+    text-shadow: 2px 2px #adadad;
+    text-align: center;
+}
+
+centered-div {
+    text-align: center;
+}
+
+body {
+    border: black solid 15px;
+    border-radius: 50px;
+    background-image: url(https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimages.pexels.com%2Fphotos%2F631342%2Fpexels-photo-631342.jpeg%3Fcs%3Dsrgb%26dl%3Dpexels-melchor-gama-631342.jpg%26fm%3Djpg&f=1&nofb=1&ipt=6eebb366225e3b0ffaf3831444cd060cc3608389a68cde21237481a4e6150473&ipo=images);
+    padding: 10px;
+    color: #44207b;
+    text-shadow: black;
+}
+
+section-header {
+    text-shadow: 2px 2px #adadad;
+    text-align: center;
+}
+
+website-navbar {
+    color: black;
+}
+
+main-text {
+    color: #22004b;
+    padding: 5px;
+    text-align: center;
+}
+
+footer {
+    text-align: center;
+}

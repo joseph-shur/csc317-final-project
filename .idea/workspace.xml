@@ -5,12 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="df436953-9ca9-4197-9875-8e314427b11a" name="Changes" comment="">
+<<<<<<< HEAD
       <change afterPath="$PROJECT_DIR$/application/public/html/index.html" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/application/public/html/login.html" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/application/public/html/postvideo.html" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/application/public/html/profile.html" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/application/public/html/registration.html" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/application/public/html/viewpost.html" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/public/html/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/public/html/index.html" afterDir="false" />
+>>>>>>> assignment3
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,6 +37,7 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+<<<<<<< HEAD
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
@@ -44,6 +51,21 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+=======
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/jshur2019/csc317-code-joseph-shur&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+>>>>>>> assignment3
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/application/public/html" />
@@ -60,7 +82,11 @@
       <updated>1678997150991</updated>
       <workItem from="1678997153943" duration="1597000" />
       <workItem from="1678999031355" duration="287000" />
+<<<<<<< HEAD
       <workItem from="1678999322988" duration="1182000" />
+=======
+      <workItem from="1678999322988" duration="656000" />
+>>>>>>> assignment3
     </task>
     <servers />
   </component>
