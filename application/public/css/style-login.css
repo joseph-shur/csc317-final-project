@@ -8,6 +8,10 @@ page-header {
     text-align: center;
 }
 
+centered-div {
+    text-align: center;
+}
+
 body {
     border: black solid 15px;
     border-radius: 50px;
@@ -17,6 +21,11 @@ body {
     text-shadow: black;
 }
 
+section-header {
+    text-shadow: 2px 2px #adadad;
+    text-align: center;
+}
+
 website-navbar {
     color: black;
 }
@@ -24,5 +33,9 @@ website-navbar {
 main-text {
     color: #22004b;
     padding: 5px;
+    text-align: center;
+}
+
+footer {
     text-align: center;
 }
