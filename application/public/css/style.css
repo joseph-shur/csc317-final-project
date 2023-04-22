@@ -12,6 +12,11 @@ centered-div {
     text-align: center;
 }
 
+input {
+    border: black solid 1px;
+    border-radius: 5px;
+}
+
 body {
     border: black solid 15px;
     border-radius: 50px;
@@ -38,4 +43,12 @@ main-text {
 
 footer {
     text-align: center;
+}
+
+.valid-text {
+    outline: solid green;
+}
+
+.invalid-text {
+    outline: solid red;
 }
