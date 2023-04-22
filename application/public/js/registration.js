@@ -21,6 +21,7 @@ function validateEmail (email) {
 function validateUsername (username) {
     var includesNumber = digitsRegex.test(username);
     var includesLetter = alphaRegex.test(username);
+
     if (username.length >= 3) {
         return true
     } else {
@@ -29,23 +30,16 @@ function validateUsername (username) {
 }
 
 function validatePassword (password) {
-    if (password.length >= 8) {
-        if (password.value.indexOf(/^[0-9]+$/, 0) < 0) {
-            if (password.value.indexOf(/^[A-Z]+$/, 0) < 0) {
-                return false
-            } else {
-                return false
-            }
-        } else {
-            return false
-        }
+        const re = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
+        return re.test(password);
+}
+
+function validateConfirmPassword (confirmPassword, password) {
+    if (confirmPassword.value === password.value) {
+        return true
     } else {
         return false
     }
-}
-
-function validateConfirmPassword (confirmPassword) {
-
 }
 
 document.getElementById("email").addEventListener("input", function (ev) {
@@ -78,7 +72,7 @@ document.getElementById("pw").addEventListener("input", function (ev) {
     let userInput = ev.currentTarget;
     let password = userInput.value;
 
-    if (validatePassword(inputPassword) === true) {
+    if (validatePassword(password) === true) {
         userInput.classList.add('valid-text');
         userInput.classList.remove('invalid-text');
     } else {
@@ -90,7 +84,7 @@ document.getElementById("confirmpw").addEventListener("input", function (ev) {
     let userInput = ev.currentTarget;
     let confirmpassword = userInput.value;
 
-    if (validateConfirmPassword(inputConfirmPassword) === true) {
+    if (validateConfirmPassword(confirmpassword, password) === true) {
         userInput.classList.add('valid-text');
         userInput.classList.remove('invalid-text');
     } else {
