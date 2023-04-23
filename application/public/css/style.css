@@ -24,6 +24,7 @@ body {
     padding: 10px;
     color: #44207b;
     text-shadow: black;
+    font-family: futura;
 }
 
 section-header {
@@ -51,4 +52,27 @@ footer {
 
 .invalid-text {
     outline: solid red;
+}
+
+.product-list {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    column-gap: 10px;
+    max-width: 1000px;
+}
+
+.product-card {
+    background-color: #ffffff;
+    border: solid 2px black;
+    width: 300px;
+    border-radius: 10px;
+    align-items: center;
+    justify-items: center;
+}
+
+.product-img {
+    border: solid black 2px;
+    max-width: 280px;
+    max-height: 100px;
+    align-content: center;
 }
