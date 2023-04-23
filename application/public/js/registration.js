@@ -4,9 +4,6 @@ let inputUsername = document.getElementById("username");
 let inputPassword = document.getElementById("pw");
 let inputConfirmPassword = document.getElementById("confirmpw");
 
-var digitsRegex = /[0-9]/;
-var alphaRegex = /[A-Za-z]/;
-
 function validateEmail (email) {
     if (email.value.indexOf("@", 0) >= 0) {
         if (email.value.indexOf(".", 0) >= 0) {
@@ -109,6 +106,26 @@ document.getElementById("confirmpw").addEventListener("input", function (ev) {
 
 //button submission, should have every validate____() function included
 document.getElementById("reg-form").addEventListener("submit", function (ev) {
-    ev.preventDefault();
+    if (validateEmail(inputEmail) === true) {
+        if (validateUsername(inputUsername) === true) {
+            if (validatePassword(inputPassword.value) === true) {
+                if (validateConfirmPassword(inputConfirmPassword.value) === true) {
+                    console.log("It worked");
+                } else {
+                    ev.preventDefault();
+                    console.log("ConfirmPassword not validated");
+                }
+            } else {
+                ev.preventDefault();
+                console.log("Password not validated");
+            }
+        } else {
+            ev.preventDefault();
+            console.log("Username not validated");
+        }
+    } else {
+        ev.preventDefault();
+        console.log("Email not validated");
+    }
     console.log(ev);
 });
