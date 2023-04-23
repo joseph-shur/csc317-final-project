@@ -16,8 +16,22 @@ async function fetchWithString() {
         </div>`
         }, "");
         document.getElementById("product-list").innerHTML = htmlString;
+        let cards = document.getElementsByClassName("product-card");
+        [...cards].forEach(function(ele){
+            ele.addEventListener('click', function(ev){
+                fadeOut(ev);
+            })
+        })
     } catch (error) {
         console.log(error);
     }
+}
+
+function fadeOut(ev) {
+    let timer = setInterval(function() {
+        console.log("1");
+        clearInterval(timer);
+    }, 200)
+    ev.currentTarget.remove();
 }
 fetchWithString();
