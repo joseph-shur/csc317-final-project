@@ -28,10 +28,12 @@ async function fetchWithString() {
 }
 
 function fadeOut(ev) {
-    let timer = setInterval(function() {
-        console.log("1");
+    var evct = ev.currentTarget;
+    evct.style.transition = 'opacity 2s';
+    evct.style.opacity = 0;
+    let timer = setInterval(function(){
+        evct.remove();
         clearInterval(timer);
-    }, 200)
-    ev.currentTarget.remove();
+    }, 2000)
 }
 fetchWithString();
