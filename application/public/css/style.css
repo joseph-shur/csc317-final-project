@@ -76,3 +76,7 @@ footer {
     max-height: 100px;
     align-content: center;
 }
+
+.product-price {
+    font-size: small;
+}

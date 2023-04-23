@@ -1,16 +1,16 @@
-var url = "https://dummyjson.com/products";
-var url2 = "https://jsonplaceholder.typicode.com/albums/2/photo";
+var url2 = "https://dummyjson.com/products";
+var url = "https://jsonplaceholder.typicode.com/albums/2/photos";
 
 async function fetchWithString() {
     try {
         var response = await fetch(url);
         var data = await response.json();
-        var htmlString = data.products.reduce(function(prev, product){
+        var htmlString = data.reduce(function(prev, product){
             return prev + `<div id="product-card" class="product-card grid-item">
-                    <img class="product-img" src="${product.thumbnail}">
+                    <img class="product-img" src="${product.thumbnailUrl}">
                     <div class="product info">
                         <p class="product-title">${product.title}</p>
-                        <p class="product-price">${product.price}</p>
+                        <p class="product-price">${product.url}</p>
                     </div>
             </div>
         </div>`
