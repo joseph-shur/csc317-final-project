@@ -10,9 +10,9 @@ Please follow the instructions below and fill in the information requested when 
 
 |               | Information   |
 |:-------------:|:-------------:|
-| Student Name  | name-here     |
-| Student ID    | id-here       |
-| Student Email | email-here    |
+| Student Name  | Joseph Shur     |
+| Student ID    | 920611195       |
+| Student Email | jshur1@sfsu.edu    |
 
 
 
@@ -24,4 +24,4 @@ Please follow the instructions below and fill in the information requested when 
 
 ## Run Instructions
 1. steps here
-2. steps here 
+2. steps here
