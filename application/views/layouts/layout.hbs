@@ -2,10 +2,24 @@
 <html>
   <head>
     <title>{{title}}</title>
-    <link rel="icon" href="/public/favicon.ico" sizes="70x70" type="image/ico">
-    <link rel='stylesheet' href='/public/css/style.css' />
+      <meta charset="UTF-8">
+      <title>Joe's Website - Home</title>
+      <link rel="stylesheet" type="text/css" href="/public/css/style.css" />
+      <script defer src="/public/js/index.js"></script>
   </head>
+  <page-header>
+      <h1>Joe's Website</h1>
+  </page-header>
+  <website-navbar>
+      <li><a href="/index">Home</a></li>
+      <li><a href="/login">Login</a></li>
+      <li><a href="/postvideo">Post Video</a></li>
+      <li><a href="/profile">Profile</a></li>
+      <li><a href="/registration">Registration</a></li>
+      <li><a href="/viewpost">View Post</a></li>
+  </website-navbar>
   <body>
     {{{body}}}
   </body>
+    {{> footer}}
 </html>
