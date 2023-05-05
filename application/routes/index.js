@@ -8,7 +8,8 @@ router.use(function(req, res, next) {
 
 /* GET home page. */
 router.get('/index', function(req, res, next) {
-  res.render('index', { title: 'CSC 317 App', name:"Joseph Shur" });
+  res.render('index', { title: 'CSC 317 App', name:"Joseph Shur",
+  results: [{},{},{},{},{},{},{},{},{}]});
 });
 
 router.use(function(req, res, next){
