@@ -4,7 +4,6 @@ page-header {
     text-align: center;
     box-shadow: black;
     border-bottom-color: black;
-    text-align: center;
 }
 
 centered-div {
@@ -85,4 +84,10 @@ footer {
 
 .navbar-item {
     color: black;
+}
+
+.submit-form {
+    border: solid white 2px;
+    width: fit-content;
+    margin: auto;
 }

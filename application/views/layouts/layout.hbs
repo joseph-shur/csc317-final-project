@@ -5,7 +5,9 @@
       <meta charset="UTF-8">
       <title>Joe's Website - Home</title>
       <link rel="stylesheet" type="text/css" href="/public/css/style.css" />
-      <script defer src="/public/js/index.js"></script>
+      {{#each js}}
+          <script defer src="/public/js/{{this}}"></script>
+      {{/each}}
   </head>
   <body>
     <page-header>

@@ -9,7 +9,7 @@ router.use(function(req, res, next) {
 /* GET home page. */
 router.get('/index', function(req, res, next) {
   res.render('index', { title: 'CSC 317 App', name:"Joseph Shur",
-  results: [{},{},{},{},{},{},{},{},{}]});
+  results: [{},{},{},{},{},{},{},{},{}], js: ["index.js"]});
 });
 
 router.use(function(req, res, next){
@@ -39,7 +39,7 @@ router.get("/profile", function(req, res) {
 });
 
 router.get("/registration", function(req, res) {
-  res.render('registration');
+  res.render('registration', { title: 'Register', js: ["registration.js"]});
 });
 
 router.get("/viewpost/:id(\\d+)", function(req, res) {
