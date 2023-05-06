@@ -1,10 +1,9 @@
 page-header {
-    color: #470073;
-    background-color: white;
+    color: white;
+    background-color: black;
     text-align: center;
     box-shadow: black;
     border-bottom-color: black;
-    text-shadow: 2px 2px #adadad;
     text-align: center;
 }
 
@@ -20,20 +19,15 @@ input {
 body {
     border: black solid 15px;
     border-radius: 50px;
-    background-image: url(https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimages.pexels.com%2Fphotos%2F631342%2Fpexels-photo-631342.jpeg%3Fcs%3Dsrgb%26dl%3Dpexels-melchor-gama-631342.jpg%26fm%3Djpg&f=1&nofb=1&ipt=6eebb366225e3b0ffaf3831444cd060cc3608389a68cde21237481a4e6150473&ipo=images);
+    background-color: black;
     padding: 10px;
-    color: #44207b;
+    color: white;
     text-shadow: black;
-    font-family: futura;
+    font-family: Helvetica Neue;
 }
 
 section-header {
-    text-shadow: 2px 2px #adadad;
     text-align: center;
-}
-
-website-navbar {
-    color: black;
 }
 
 main-text {
@@ -62,8 +56,8 @@ footer {
 }
 
 .product-card {
-    background-color: #ffffff;
-    border: solid 2px black;
+    background-color: black;
+    border: solid 2px white;
     width: 300px;
     border-radius: 10px;
     align-items: center;
@@ -79,4 +73,16 @@ footer {
 
 .product-price {
     font-size: small;
+}
+
+.website-navbar {
+    background-color: white;
+    border: solid white 2px;
+    border-radius: 30px;
+    margin: 10px;
+    padding: 10px;
+}
+
+.navbar-item {
+    color: black;
 }

@@ -43,7 +43,7 @@ router.get("/registration", function(req, res) {
 });
 
 router.get("/viewpost/:id(\\d+)", function(req, res) {
-  res.render('viewpost');
+  res.render('viewpost', { title: `View Post ${req.params.id}`, js: ["viewpost.js"]});
 });
 
 module.exports = router;
