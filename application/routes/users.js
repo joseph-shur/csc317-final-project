@@ -1,24 +1,19 @@
 var express = require('express');
 var router = express.Router();
-var db = require('../conf/database.js');
+var db = require('../conf/database');
 //var bcrypt = require('bcrypt');
 var { isLoggedIn, isMyProfile } = require('../middleware/auth');
 var { isUsernameUnique, usernameCheck } = require('../middleware/validation');
 
+//Get users listing
 router.get('/', async function(req, res, next) {
-  try {
+
+  try{
     let [rows, fields] = await db.query(`select * from users;`);
-    res.status(200).json({rows, fields});
-  } catch (error) {
+    res.status(200).json({rows});
+  }catch(error) {
     next(error);
   }
-
-  db.query('select * from posts;', function(error, rows) {
-    if(error) {
-      next(error);
-    }
-    res.status(200).json({rows});
-  })
 });
 
 router.use('/registration', function(req, res, next) {

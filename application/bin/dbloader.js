@@ -39,7 +39,7 @@ async function makeDatabase(connection) {
 async function makeUsersTable(connection) {
   const [result, _] = await connection.query(
     // Users Table SQL Goes here
-    `CREATE TABLE IF NOT EXISTS csc317db.users (
+    `CREATE TABLE IF NOT EXISTS ${process.env.DB_NAME}.users (
   id INT UNSIGNED NOT NULL AUTO_INCREMENT,
   email VARCHAR(128) NOT NULL,
   password VARCHAR(255) NOT NULL,
@@ -64,7 +64,7 @@ async function makeUsersTable(connection) {
 async function makePostsTable(connection) {
   const [result, _] = await connection.query(
     // Posts Table SQL Goes here
-    `CREATE TABLE IF NOT EXISTS csc317db.posts (
+    `CREATE TABLE IF NOT EXISTS ${process.env.DB_NAME}.posts (
   id INT UNSIGNED NOT NULL AUTO_INCREMENT,
   title VARCHAR(255) NOT NULL,
   description MEDIUMTEXT NOT NULL,
@@ -78,7 +78,7 @@ async function makePostsTable(connection) {
   INDEX fk_postAuthor_idx (fk_userid ASC) VISIBLE,
   CONSTRAINT fk_postAuthor
     FOREIGN KEY (fk_userid)
-    REFERENCES csc317db.users (id)
+    REFERENCES ${process.env.DB_NAME}.users (id)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -95,7 +95,7 @@ ENGINE = InnoDB
 async function makeCommentsTable(connection) {
   const [result, _] = await connection.query(
     // Comments Table SQL Goes here
-    `CREATE TABLE IF NOT EXISTS csc317db.comments (
+    `CREATE TABLE IF NOT EXISTS ${process.env.DB_NAME}.comments (
   id INT UNSIGNED NOT NULL AUTO_INCREMENT,
   createdAt DATETIME NOT NULL DEFAULT current_timestamp,
   text TEXT NOT NULL,
@@ -108,12 +108,12 @@ async function makeCommentsTable(connection) {
   INDEX fk_postid_idx (fk_postid ASC) VISIBLE,
   CONSTRAINT fk_comment_author
     FOREIGN KEY (fk_authorid)
-    REFERENCES csc317db.users (id)
+    REFERENCES ${process.env.DB_NAME}.users (id)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT fk_postid
     FOREIGN KEY (fk_postid)
-    REFERENCES csc317db.posts (id)
+    REFERENCES ${process.env.DB_NAME}.posts (id)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -133,7 +133,7 @@ ENGINE = InnoDB
     connection = await getConnection();
     await makeDatabase(connection); // make DB
     //TODO make sure to change yourdbnamehere
-    await connection.query("USE csc317db"); // set new DB to the current DB
+    await connection.query(`USE ${process.env.DB_NAME}`); // set new DB to the current DB
     await makeUsersTable(connection); // try to make user table
     await makePostsTable(connection); // try to make posts table
     await makeCommentsTable(connection); // try to make comments table
