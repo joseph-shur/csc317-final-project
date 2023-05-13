@@ -12,11 +12,6 @@ router.get('/', function(req, res, next) {
     results: [{},{},{},{},{},{},{},{},{}], js: ["index.js"]});
 });
 
-router.use(function(req, res, next){
-  console.log("i am a middleware from index");
-  next();
-});
-
 router.get("/login", function(req, res) {
   res.render('login');
 });

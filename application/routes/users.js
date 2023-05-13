@@ -16,36 +16,38 @@ router.get('/', async function(req, res, next) {
   }
 });
 
-router.use('/registration', function(req, res, next) {
+router.get('/registration', function(req, res, next) {
+
 });
-router.post('/registration',isUsernameUnique, usernameCheck, async function(req, res, next) {
+
+router.post('/registration', async function(req, res, next) {
   var {username, email, password} = req.body;
   try{
     //check username
-    var [rows, fields] = await db.execute(`select id from users where username?;`, [username]);
+    var [rows, fields] = await db.execute(`select id from users where username=?;`, [username]);
     if(rows && rows.length > 0){
       return res.redirect('/registration');
     }
     //check email
-    var [rows, fields] = await db.execute(`select id from users where email?;`, [email]);
+    var [rows, fields] = await db.execute(`select id from users where email=?;`, [email]);
     if(rows && rows.length > 0){
       return res.redirect('/registration');
     }
-    var [resultObject, fields] = db.execute(`INSERT INTO users (username, email, password) value (?,?,?)`,[username, email, password]);
+    //insert
+    var [resultObject, fields] = db.execute(`INSERT INTO users
+    (username, email, password)
+    value 
+    (?,?,?);`, [username, email, password]);
 
     //respond
-    if(resultObject && resultObject.affectedRows === 1){
+    if(resultObject && resultObject.affectedRows == 1){
       res.redirect('/login');
     } else {
       return res.redirect('/registration');
     }
-    console.log(resultObject);
-    res.end();
   } catch(error) {
     next(error);
   }
-  console.log(req.body);
-  res.end();
 
 });
 

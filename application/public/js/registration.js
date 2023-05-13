@@ -1,8 +1,8 @@
 
 let inputEmail = document.getElementById("email");
 let inputUsername = document.getElementById("username");
-let inputPassword = document.getElementById("pw");
-let inputConfirmPassword = document.getElementById("confirmpw");
+let inputPassword = document.getElementById("password");
+let inputConfirmPassword = document.getElementById("confirmpassword");
 
 function validateEmail (email) {
     if (email.value.indexOf("@", 0) >= 0) {
@@ -79,7 +79,7 @@ document.getElementById("username").addEventListener("input", function (ev) {
     }
 });
 
-document.getElementById("pw").addEventListener("input", function (ev) {
+document.getElementById("password").addEventListener("input", function (ev) {
     let userInput = ev.currentTarget;
     let password = userInput.value;
 
@@ -91,7 +91,7 @@ document.getElementById("pw").addEventListener("input", function (ev) {
         userInput.classList.add('invalid-text');
     }
 });
-document.getElementById("confirmpw").addEventListener("input", function (ev) {
+document.getElementById("confirmpassword").addEventListener("input", function (ev) {
     let userInput = ev.currentTarget;
     let confirmPassword = userInput.value;
 
