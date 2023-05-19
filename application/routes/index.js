@@ -1,4 +1,5 @@
 var express = require('express');
+const {isLoggedIn} = require("../middleware/auth");
 var router = express.Router();
 
 router.use(function(req, res, next) {
@@ -16,29 +17,26 @@ router.get("/login", function(req, res) {
   res.render('login');
 });
 
-router.use('/postvideo', function(req, res, next) {
-  //where to pull up API token and validate user/key
-  if(req.userIsLoggedIn = false){
-    next();
-  } else {
-    res.redirect('/users/login');
-  }
+router.get("/postvideo", isLoggedIn, function(req, res) {
+  res.render('postvideo');
 });
 
-router.get("/postvideo", function(req, res) {
-  res.render('index');
-});
-
-router.get("/profile", function(req, res) {
-  res.render('profile');
+router.get("/profile/:id(\\d+)",function(req, res) {
+  res.render('profile', { title: `Profile`});
 });
 
 router.get("/registration", function(req, res) {
   res.render('registration', { title: 'Register', js: ["registration.js"]});
 });
 
-router.get("/viewpost/:id(\\d+)", function(req, res) {
-  res.render('viewpost', { title: `View Post ${req.params.id}`, js: ["viewpost.js"]});
+router.get("/logout", isLoggedIn, function (req, res, next) {
+  req.session.destroy(function(err) {
+    if(err){
+      next(err);
+    }
+    // req.flash("success", `You are now logged out`);
+    return res.redirect("/");
+  })
 });
 
 module.exports = router;

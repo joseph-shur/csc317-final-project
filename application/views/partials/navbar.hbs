@@ -1,12 +1,9 @@
 <div class="website-navbar">
     <a class="navbar-item" href="/">Home</a> <span>" "</span>
     {{#if isLoggedIn}}
-        <a class="navbar-item" href="/profile">Profile</a> <span>" "</span>
+        <a class="navbar-item" href="/postvideo">Post Video</a> <span>" "</span>
+        <a class="navbar-item" href="/profile/">Profile</a> <span>" "</span>
         <a class="navbar-item" href="/logout">Logout</a> <span>" "</span>
-        <form action="/users/logout" method="post">
-            <input type="hidden" value="{{csrf}}">
-            <button type="submit">Logout</button>
-        </form>
     {{else}}
         <a class="navbar-item" href="/login">Login</a> <span>" "</span>
         <a class="navbar-item" href="/registration">Register</a> <span>" "</span>

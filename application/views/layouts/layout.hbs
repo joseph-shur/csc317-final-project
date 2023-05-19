@@ -10,6 +10,9 @@
       {{/each}}
   </head>
   <body>
+  {{#if (nonEmptyObject messages)}}
+      {{> flashmessage this}}
+  {{/if}}
     <page-header>
         <h1>Joe's Website</h1>
     </page-header>

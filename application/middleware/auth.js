@@ -9,7 +9,7 @@ module.exports = {
     isMyProfile: function(req, res, next) {
         //by default all profiles are private
         var { id } = req.params;
-        if( id == req.session.user.userId) {
+        if( id == req.session.user.userid) {
             next();
         } else {
             req.flash('error', "this is not your profile, this profile is private");

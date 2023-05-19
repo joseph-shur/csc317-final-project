@@ -39,7 +39,7 @@ router.post('/registration', async function(req, res, next) {
     //insert
     var [resultObject, fields] = await db.execute(`INSERT INTO users
     (username, email, password)
-    value 
+    VALUE 
     (?,?,?);`, [username, email, hashedPassword]);
 
     //respond
@@ -63,7 +63,10 @@ router.post('/login', async function(req, res, next) {
     var [rows, fields] = await db.execute(`select id, username,password,email from users where username=?;`, [username]);
     var user = rows[0];
     if (!user) {
-      return res.redirect("/login");
+      req.flash("error", `Log in Failed: Invalid username/password.`);
+      req.session.save(function(err) {
+        return res.redirect("/login");
+      });
     } else {
       var passwordsMatch = await bcrypt.compare(password, user.password);
       if (passwordsMatch) {
@@ -72,7 +75,11 @@ router.post('/login', async function(req, res, next) {
           email: user.email,
           username: user.username
         }
-        return res.redirect("/");
+        req.flash("success", `You are now logged in`);
+
+        req.session.save(function(err) {
+          return res.redirect("/");
+        });
       } else {
         return res.redirect("/login");
       }
@@ -89,16 +96,8 @@ router.use(function(req, res, next) {
 });
 
 router.get("profile/:id(\\d+)", isLoggedIn, isMyProfile, function (req, res) {
+  
   res.render("profile");
-});
-
-router.post("/logout", isLoggedIn, function (req, res) {
-    req.session.destroy(function(err) {
-      if(err){
-        next(error);
-      }
-      return res.redirect("/");
-    })
 });
 
 module.exports = router;
