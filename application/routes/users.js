@@ -2,12 +2,11 @@ var express = require('express');
 var router = express.Router();
 var db = require('../conf/database');
 var bcrypt = require('bcrypt');
-var { isLoggedIn, isMyProfile } = require('../middleware/auth');
+var { isLoggedIn, isMyProfile} = require('../middleware/auth');
 var { isUsernameUnique, usernameCheck } = require('../middleware/validation');
 
 //Get users listing
 router.get('/', isUsernameUnique, isMyProfile, async function(req, res, next) {
-
   try{
     let [rows, fields] = await db.query(`select * from users;`);
     res.status(200).json({rows});
@@ -95,9 +94,16 @@ router.use(function(req, res, next) {
   }
 });
 
+router.get("profile/", function(req, res, next) {
+  if (req.session.user) {
+    return res.redirect(`profile/`);
+  } else {
+    return res.redirect(`/`);
+  }
+});
+
 router.get("profile/:id(\\d+)", isLoggedIn, isMyProfile, function (req, res) {
-  
-  res.render("profile");
+  res.render("profile", {user: `${req.session.user}`});
 });
 
 module.exports = router;

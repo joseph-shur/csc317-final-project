@@ -75,15 +75,23 @@ footer {
 }
 
 .website-navbar {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto;
     background-color: white;
     border: solid white 2px;
     border-radius: 30px;
     margin: 10px;
     padding: 10px;
+    display: grid;
 }
 
 .navbar-item {
     color: black;
+}
+
+.navbar-username {
+    color: black;
+    align-items: end;
 }
 
 .submit-form {

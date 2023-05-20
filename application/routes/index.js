@@ -5,6 +5,9 @@ var router = express.Router();
 router.use(function(req, res, next) {
   req.userIsLoggedIn = true;
   next();
+  if (isLoggedIn === true) {
+
+  }
 });
 
 /* GET home page. */
@@ -14,7 +17,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get("/login", function(req, res) {
-  res.render('login');
+  res.render('login', {user: `${req.session.user}`});
 });
 
 router.get("/postvideo", isLoggedIn, function(req, res) {
@@ -22,7 +25,7 @@ router.get("/postvideo", isLoggedIn, function(req, res) {
 });
 
 router.get("/profile/:id(\\d+)",function(req, res) {
-  res.render('profile', { title: `Profile`});
+  res.render('profile', { title: `Profile`, userid: `${req.session.user.userid}`});
 });
 
 router.get("/registration", function(req, res) {

@@ -1,11 +1,14 @@
 <div class="website-navbar">
-    <a class="navbar-item" href="/">Home</a> <span>" "</span>
+    <a class="navbar-item" href="/">Home</a>
     {{#if isLoggedIn}}
-        <a class="navbar-item" href="/postvideo">Post Video</a> <span>" "</span>
-        <a class="navbar-item" href="/profile/">Profile</a> <span>" "</span>
-        <a class="navbar-item" href="/logout">Logout</a> <span>" "</span>
+        <a class="navbar-item" href="/postvideo">Post Video</a>
+        <a class="navbar-item" href="/profile/{{user.userid}}">Profile</a>
+        <a class="navbar-item" href="/logout">Logout</a>
     {{else}}
-        <a class="navbar-item" href="/login">Login</a> <span>" "</span>
-        <a class="navbar-item" href="/registration">Register</a> <span>" "</span>
+        <a class="navbar-item" href="/login">Login</a>
+        <a class="navbar-item" href="/registration">Register</a>
+    {{/if}}
+    {{#if isLoggedIn}}
+        <span class="navbar-username">Hi, {{user.username}}</span>
     {{/if}}
 </div>

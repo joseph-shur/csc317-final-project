@@ -1,22 +1,33 @@
 module.exports = {
-    isLoggedIn: function(req, res, next) {
-        if(req.session.user) {
+    isLoggedIn: function (req, res, next) {
+        if (req.session.user) {
             next();
         } else {
-            req.flash('error', `you must be logged in`);
+            req.flash("error", "You must be logged in to view this page.");
+            req.session.save(function (err) {
+                if (err) next(err);
+                res.redirect("/login");
+            });
         }
     },
-    isMyProfile: function(req, res, next) {
-        //by default all profiles are private
+    isMyProfile: function (req, res, next) {
         var { id } = req.params;
-        if( id == req.session.user.userid) {
+        if (id == req.session.user.userId) {
             next();
         } else {
-            req.flash('error', "this is not your profile, this profile is private");
-            req.session.save(function(err) {
-                if(err) next(err);
-                res.redirect('/index');
-            })
+            req.flash("error", "This is not your profile. This profile is private.");
+            req.session.save(function (err) {
+                if (err) next(err);
+                res.redirect("/");
+            });
         }
     },
+    currentUserId: function(req, res, next) {
+        var currentUserId;
+        if (req.session.user) {
+            currentUserId = req.session.user.userid;
+        } else {
+
+        }
+    }
 };
