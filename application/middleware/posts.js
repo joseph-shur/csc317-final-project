@@ -19,17 +19,32 @@ module.exports = {
             }
         }
     },
-    getPostsForUserBy: function(req, res, next) {
-
+    getPostsForUserBy: async function(req, res, next) {
+        try {
+            let [rows] = await db.execute(`SELECT * FROM csc317db.posts WHERE fk_userid=${req.session.user.userid};`);
+            const posts = rows;
+            res.locals.postsForUser = posts;
+        } catch(error) {
+            next(error);
+        }
     },
     getPostById: function(req, res, next) {
         res.locals.currentPost = rows[0];
+
     },
     getCommentsForPostById: function(req, res, next) {
         res.locals.currentPost.comments = rows;
-    },
-    getRecentPosts: function(req, res, next) {
 
+    },
+    getRecentPosts: async function(req, res, next) {
+        try {
+            let [rows] = await db.execute(`SELECT * FROM csc317db.posts ORDER BY createdAt DESC LIMIT 8;`);
+            const posts = rows;
+            res.locals.recentPosts = posts;
+            next();
+        } catch(error) {
+            next(error);
+        }
     }
 
 };
