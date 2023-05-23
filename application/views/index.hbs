@@ -1,7 +1,8 @@
 <main>
-    {{#each results}}
-        {{#> card this}}
-            <div>Error loading card partial</div>
-        {{/card}}
-    {{/each}}
+    <div class="product-list grid-container">
+        {{#each posts}}
+            {{log this}}
+            {{>post this}}
+        {{/each}}
+    </div>
 </main>

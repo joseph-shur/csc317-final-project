@@ -1,5 +1,6 @@
 var express = require('express');
 const {isLoggedIn} = require("../middleware/auth");
+const {getRecentPosts, getPostsForUserById} = require("../middleware/posts");
 var router = express.Router();
 
 router.use(function(req, res, next) {
@@ -11,9 +12,8 @@ router.use(function(req, res, next) {
 });
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'CSC 317 App', name:"Joseph Shur",
-    results: [{},{},{},{},{},{},{},{},{}], js: ["index.js"]});
+router.get('/', getRecentPosts,function(req, res, next) {
+  res.render('index',{ title: 'CSC 317 App', name:"Joseph Shur", js: ["index.js"]});
 });
 
 router.get("/login", function(req, res) {
@@ -24,8 +24,8 @@ router.get("/postvideo", isLoggedIn, function(req, res) {
   res.render('postvideo');
 });
 
-router.get("/profile/:id(\\d+)",function(req, res) {
-  res.render('profile', { title: `Profile`, userid: `${req.session.user.userid}`});
+router.get("/profile/:id(\\d+)", getPostsForUserById, function(req, res) {
+  res.render('profile', { title: `Profile`, js: `profile.js`, userid: `${req.session.user.userid}`});
 });
 
 router.get("/registration", function(req, res) {

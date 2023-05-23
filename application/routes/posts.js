@@ -56,7 +56,21 @@ router.get("/:id(\\d+)", function(req, res) {
     res.render('viewpost', { title: `View Post ${req.params.id}`, js: ["viewpost.js"]});
 });
 
-router.get("/search", function(req, res, next) {
+router.get("/search", async function(req, res, next) {
+    var {searchValue} = req.query;
+
+    try {
+        var [rows, _] = await db.execute(`select id,title,thumbnail, concat_ws(' ',title,description) as haystack from posts having haystack like ?;`, [`%${searchValue}%`]);
+
+        if (rows && rows.length == 0) {
+            return res.render(`index`);
+        } else {
+            res.locals.posts = rows;
+            return res.render('index');
+        }
+    } catch(error) {
+        next(error);
+    }
 
 });
 

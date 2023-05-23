@@ -103,7 +103,7 @@ router.get("profile/", function(req, res, next) {
 });
 
 router.get("profile/:id(\\d+)", isLoggedIn, isMyProfile, function (req, res) {
-  res.render("profile", {user: `${req.session.user}`});
+  res.render("profile", {js: `profile.js`, user: `${req.session.user}`});
 });
 
 module.exports = router;

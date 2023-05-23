@@ -5,23 +5,23 @@ async function fetchWithString() {
     try {
         var response = await fetch(url);
         var data = await response.json();
-        var htmlString = data.reduce(function(prev, product){
+        var htmlString = data.reduce(function(prev, post){
             return prev + `<div id="product-card" class="product-card grid-item">
-                    <img class="product-img" src="${product.thumbnailUrl}">
+                    <img class="product-img" src="${post.thumbnail}">
                     <div class="product info">
-                        <p class="product-title">${product.title}</p>
-                        <p class="product-price">${product.url}</p>
+                        <p class="product-title">${post.title}</p>
+                        <p class="product-price">${post.description}</p>
                     </div>
             </div>
         </div>`
         }, "");
-        document.getElementById("product-list").innerHTML = htmlString;
-        let cards = document.getElementsByClassName("product-card");
-        [...cards].forEach(function(ele){
-            ele.addEventListener('click', function(ev){
-                fadeOut(ev);
-            })
-        })
+        // document.getElementById("product-list").innerHTML = htmlString;
+        // let cards = document.getElementsByClassName("product-card");
+        // [...cards].forEach(function(ele){
+        //     ele.addEventListener('click', function(ev){
+        //         fadeOut(ev);
+        //     })
+        // })
     } catch (error) {
         console.log(error);
     }

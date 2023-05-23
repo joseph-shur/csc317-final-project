@@ -1,5 +1,6 @@
 var pathToFFMPEG = require('ffmpeg-static');
 var exec = require('child_process').exec;
+const db = require('../conf/database');
 
 module.exports = {
     makeThumbnail: function (req, res, next) {
@@ -19,11 +20,11 @@ module.exports = {
             }
         }
     },
-    getPostsForUserBy: async function(req, res, next) {
+    getPostsForUserById: async function(req, res, next) {
         try {
-            let [rows] = await db.execute(`SELECT * FROM csc317db.posts WHERE fk_userid=${req.session.user.userid};`);
-            const posts = rows;
-            res.locals.postsForUser = posts;
+            let [rows] = await db.execute(`SELECT id,title,thumbnail FROM csc317db.posts WHERE fk_userid=${req.session.user.userid};`);
+            res.locals.posts = rows;
+            next();
         } catch(error) {
             next(error);
         }
@@ -38,9 +39,9 @@ module.exports = {
     },
     getRecentPosts: async function(req, res, next) {
         try {
-            let [rows] = await db.execute(`SELECT * FROM csc317db.posts ORDER BY createdAt DESC LIMIT 8;`);
-            const posts = rows;
-            res.locals.recentPosts = posts;
+            var [rows, _] = await db.execute(`SELECT id,title,thumbnail FROM csc317db.posts ORDER BY createdAt DESC LIMIT 8;`);
+            res.locals.posts = rows;
+            return res.render('index');
             next();
         } catch(error) {
             next(error);
