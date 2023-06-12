@@ -3,18 +3,17 @@ var url = "https://jsonplaceholder.typicode.com/albums/2/photos";
 
 async function fetchWithString() {
     try {
-        var response = await db.execute(`SELECT * FROM csc317db.posts WHERE fk_userid=${req.session.user.userid};`); //Change this line to gain data from posts table
+        var response = await db.execute(`SELECT * FROM csc317db.posts WHERE fk_userid=${req.session.user.userid};`);
         var data = await response.json();
         var htmlString = data.reduce(function(prev, post){
-            return prev + `<div id="product-list" class="product-list grid-container">
-    <a href="/posts/{{this.id}}">
-        <img src="/{{this.thumbnail}}">
-    </a>
-    <p class="video-username">{{this.username}}</p>
-    <p class="video-date">{{this.createdAt}}</p>
-    <p class="video-title">{{this.title}}</p>
-    <p class="video-description">{{this.description}}</p>
-</div>`
+            return prev + `<div id="product-card" class="product-card grid-item">
+                    <img class="product-img" src="${post.thumbnail}">
+                    <div class="product info">
+                        <p class="product-title">${post.title}</p>
+                        <p class="product-price">${post.description}</p>
+                    </div>
+            </div>
+        </div>`
         }, "");
         // document.getElementById("product-list").innerHTML = htmlString;
         // let posts = document.getElementsByClassName("product-card");

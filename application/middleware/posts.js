@@ -29,13 +29,44 @@ module.exports = {
             next(error);
         }
     },
-    getPostById: function(req, res, next) {
-        res.locals.currentPost = rows[0];
+    getPostById: async function(req, res, next) {
+        var {id} = req.params;
 
+        try {
+            let [rows, _] = await db.execute(`SELECT u.username, p.video, p.title, p.description, p.id, p.createdAt
+            from posts p
+            JOIN users u
+            ON p.fk_userid=u.id
+            WHERE p.id=?`, [id]);
+
+            const post = rows[0];
+            if(!post) {
+                return res.status(404).json({ error: `Post not found`});
+            } else {
+                res.locals.currentPost = post;
+                next();
+            }
+
+        } catch (error) {
+            next(error);
+        }
     },
-    getCommentsForPostById: function(req, res, next) {
-        res.locals.currentPost.comments = rows;
+    getCommentsForPostById: async function(req, res, next) {
+        var {id} = req.params;
 
+        try {
+            let [rows, _] = await db.execute(`SELECT u.username, c.text, c.createdAt
+            from comments c
+            JOIN users u
+            ON c.fk_authorid=u.id
+            WHERE c.fk_postid=?`, [id]);
+
+            res.locals.currentPost.comments = rows;
+            next();
+
+        } catch (error) {
+            next(error);
+        }
     },
     getRecentPosts: async function(req, res, next) {
         try {

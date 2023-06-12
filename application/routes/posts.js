@@ -3,8 +3,7 @@ var router = express.Router();
 var multer = require('multer');
 var db = require("../conf/database");
 const {isLoggedIn} = require ("../middleware/auth");
-
-const {makeThumbnail} = require("../middleware/posts");
+const {makeThumbnail, getPostById, getCommentsForPostById} = require("../middleware/posts");
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -25,14 +24,6 @@ router.post("/create", isLoggedIn, upload.single("uploadVideo"), makeThumbnail, 
     var { path, thumbnail } = req.file;
     var { userid } = req.session.user;
 
-    // console.log("1FILE1");
-    // console.log(req.body);
-    // console.log("2FILE2");
-    // console.log(req.file);
-    // console.log("3USER3");
-    // console.log(req.session.user);
-    // return res.redirect("/");
-
     try {
         var [insertResult, _ ] = await db.execute(
             `INSERT INTO posts (title, description, video, thumbnail, fk_userid) VALUE (?,?,?,?,?);`,
@@ -52,7 +43,7 @@ router.post("/create", isLoggedIn, upload.single("uploadVideo"), makeThumbnail, 
     }
 });
 
-router.get("/:id(\\d+)", function(req, res) {
+router.get("/:id(\\d+)", getPostById,getCommentsForPostById, function(req, res) {
     res.render('viewpost', { title: `View Post ${req.params.id}`, js: ["viewpost.js"]});
 });
 

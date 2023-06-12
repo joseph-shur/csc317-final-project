@@ -6,4 +6,4 @@ const videoObserver = new IntersectionObserver(function (entries) {
     }
 });
 
-videoObserver.observe(document.querySelector(".post-container > video"));
+// videoObserver.observe(document.querySelector(".post-container > video"));

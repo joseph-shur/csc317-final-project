@@ -1,11 +1,46 @@
 <main>
-    <section-header><h3 class="post-title">BOWLING ANIMATION</h3></section-header>
-    <div class="post-author">Posted by: bryanandryan</div>
-    <div class="post-creation-time">Time Created: 12:00:00 AM 02/28/2023</div>
-    <video class="post-video" src="/public/html/Sfw%20bowling%20animation.mp4" width="320" height="240 controls"></video>
+    <section-header><h1 class="post-title">{{currentPost.title}}</h1></section-header>
+    <br>
+    <video class="video-container" controls>
+        <source class="post-video" src="/{{currentPost.video}}" width="320" height="240 controls"></source>
+    </video>
+    <div class="post-author">Posted by: {{currentPost.username}} at {{formatDateString currentPost.createdAt}}</div>
+    <h2>DESCRIPTION</h2>
+    <div class="post-description">{{currentPost.description}}</div>
     <div class="comments-section"><h3>COMMENTS</h3>
+        <div class="submit-comment">
+            <form action="/comments/create" method="POST" enctype="application/x-www-form-urlencoded">
+                <input id="comment-text" class="comment-text" name="comment-text" type="text">
+                <button id="comment-button" class="comment-button" type="submit" data-postid="{{currentPost.id}}">Post</button>
+            </form>
+        </div>
         {{#each currentPost.comments}}
             {{> comment this}}
         {{/each}}
     </div>
+    <script>
+        document.getElementById('comment-button').addEventListener('click', function(ev) {
+            let commentText = document.getElementById("comment-text").value;
+            if(!commentText) return;
+            console.log(ev.currentTarget.dataset.postid);
+            var postid = ev.currentTarget.dataset.postid;
+
+            fetch("/comments/create", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(
+                        {
+                            postid: postid,
+                            comment: commentText
+                        }
+                )
+            })
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log(data);
+                    })
+        })
+    </script>
 </main>
